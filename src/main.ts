@@ -11,7 +11,7 @@ async function bootstrap() {
 	app.useStaticAssets(join(__dirname, '..', 'public'));
 
 	const configService = app.get(ConfigService);
-	await app.listen(configService.get('port'));
+	await app.listen(process.env.PORT || configService.get('port'));
 	console.log(`Application is running on: ${await app.getUrl()}`);
 }
 
